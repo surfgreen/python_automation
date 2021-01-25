@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import netmiko
+
 # device setup dictionaries for lab
 cisco3 = {
     'comment': 'Cisco IOS-XE',
@@ -62,7 +64,7 @@ arista4 = {
 }
 
 srx2 = {
-    'comment':'Juniper_SRX',
+    'comment': 'Juniper_SRX',
     'hostname': 'srx2.lasthop.io',
     'ssh_port': 22,
     'netconf_port': 830,
@@ -88,3 +90,12 @@ nxos2 = {
     'password': '88newclass',
     'device_type': 'nxos'
 }
+
+
+def simple_connect(device_list):
+    command = input("Enter the command:\n")
+    for device in device_list:
+        net_connect = netmiko.ConnectHandler(**device)
+        output = net_connect.send_command(command)
+        output.append()
+        print(output)
