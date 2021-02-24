@@ -212,7 +212,7 @@ def main():
     output = send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args)
     print(output)
     # close ssh connection
-    ssh_disconnect(thread_dict
+    ssh_disconnect(thread_dict)
     return None
 
 if __name__ == "__main__":
