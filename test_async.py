@@ -2,6 +2,7 @@ import asyncio
 from netmiko import ConnectHandler
 import getpass
 
+"""
 device_dict = {
 'cisco3': {
     # 'comment': 'Cisco IOS-XE',
@@ -91,6 +92,28 @@ device_dict = {
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'cisco_nxos'
+}
+}
+"""
+device_dict = {
+'cisco3': {
+    # 'comment': 'Cisco IOS-XE',
+    'host': 'cisco3.lasthop.io',
+    # 'snmp_port': 161,
+    # 'ssh_port': 22,
+    'username': 'pyclass',
+    'password': '88newclass',
+    'device_type': 'cisco_xe'
+},
+
+'cisco': {
+    # 'comment': 'Cisco IOS-XE',
+    'host': 'cisco4.lasthop.io',
+    # 'snmp_port': 161,
+    # 'ssh_port': 22,
+    'username': 'pyclass',
+    'password': '88newclass',
+    'device_type': 'cisco_xe'
 }
 }
 
