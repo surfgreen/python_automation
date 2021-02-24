@@ -133,6 +133,7 @@ exec_send_args = {'command_string': "show run",
                   'cmd_verify': True
                   }
 
+
 # connection dictionary argument setup functions
 def binary_prompt(user_text):
     # handles yes and no prompts
@@ -188,22 +189,11 @@ async def ssh_connect(sort_dict):
     # returns our "thread_dict" with the format {device_name: connection_object}
     device_list = list(sort_dict)
     coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
-    try:
-        threads = await asyncio.gather(*coroutine)
-        thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
-        return thread_dict
-    except Exception:  # improve error handling
-        error_code = '''
-        WARNING SOMETHING WENT WRONG
-        Common causes of this are:
-                1. Incorrect hostname or IP address
-                2. Wrong TCP port
-                3. Intermediate firewall blocking access
-                4. Incorrect Credentials
-        Check your settings
-                '''
-        print(error_code)
-        quit()
+    print("start asyncio")
+    threads = await asyncio.gather(*coroutine)
+    thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
+    return thread_dict
+
 
 
 async def ssh_disconnect(thread_dict):
