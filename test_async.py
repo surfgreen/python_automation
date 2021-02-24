@@ -1,5 +1,5 @@
 import asyncio
-import netmiko
+from netmiko import ConnectHandler
 import getpass
 
 device_dict = {
@@ -159,7 +159,7 @@ def prompt_credentials():
         return prompt_credentials()
 
 
-async def ssh_connect(sort_dict=device_dict):
+async def ssh_connect(sort_dict):
     # takes in a sorted connection dictionary used to make ssh connections
     # returns our "thread_dict" with the format {device_name: connection_object}
     device_list = list(sort_dict)
@@ -209,10 +209,10 @@ def main():
     thread_dict = asyncio.run(ssh_connect(sorted_dict=device_dict))
 
     # send commands
-    output = send_exec_command(thread_dict=thread_dict, send_dict_args=exec_send_args)
+    output = send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args)
     print(output)
     # close ssh connection
-    ssh_disconnect(thread_dict)
+    ssh_disconnect(thread_dict
     return None
 
 if __name__ == "__main__":
