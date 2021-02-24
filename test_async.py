@@ -189,6 +189,7 @@ async def ssh_connect(sort_dict):
     # returns our "thread_dict" with the format {device_name: connection_object}
     device_list = list(sort_dict)
     coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
+    print(coroutine)
     print("start asyncio")
     threads = await asyncio.gather(*coroutine)
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
