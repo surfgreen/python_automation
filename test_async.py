@@ -6,7 +6,7 @@ device_dict = {
 'cisco3': {
     # 'comment': 'Cisco IOS-XE',
     'host': 'cisco3.lasthop.io',
-    'snmp_port': 161,
+    # 'snmp_port': 161,
     'ssh_port': 22,
     'username': 'pyclass',
     'password': '88newclass',
@@ -16,7 +16,7 @@ device_dict = {
 'cisco': {
     # 'comment': 'Cisco IOS-XE',
     'host': 'cisco4.lasthop.io',
-    'snmp_port': 161,
+    # 'snmp_port': 161,
     'ssh_port': 22,
     'username': 'pyclass',
     'password': '88newclass',
@@ -27,7 +27,7 @@ device_dict = {
     # 'comment': 'Arista_vEOS_switch',
     'host': 'arista1.lasthop.io',
     'ssh_port': 22,
-    'eapi_port': 443,
+    # 'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'arista_eos'
@@ -37,7 +37,7 @@ device_dict = {
     # 'comment': 'Arista_vEOS_switch',
     'host': 'arista2.lasthop.io',
     'ssh_port': 22,
-    'eapi_port': 443,
+    # 'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'arista_eos'
@@ -47,7 +47,7 @@ device_dict = {
     # 'comment': 'Arista_vEOS_switch',
     'host': 'arista3.lasthop.io',
     'ssh_port': 22,
-    'eapi_port': 443,
+    # 'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'arista_eos'
@@ -57,7 +57,7 @@ device_dict = {
     # 'comment': 'Arista_vEOS_switch',
     'host': 'arista4.lasthop.io',
     'ssh_port': 22,
-    'eapi_port': 443,
+    # 'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'arista_eos'
@@ -67,7 +67,7 @@ device_dict = {
     # 'comment': 'Juniper_SRX',
     'host': 'srx2.lasthop.io',
     'ssh_port': 22,
-    'netconf_port': 830,
+    # 'netconf_port': 830,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'juniper'
@@ -77,7 +77,7 @@ device_dict = {
     # 'comment': 'NX-OSv Switch',
     'host': 'nxos1.lasthop.io',
     'ssh_port': 22,
-    'nxapi_port': 8443,
+    # 'nxapi_port': 8443,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'cisco_nxos'
@@ -87,7 +87,7 @@ device_dict = {
     # 'comment': 'NX-OSv Switch',
     'host': 'nxos2.lasthop.io',
     'ssh_port': 22,
-    'nxapi_port': 8443,
+    # 'nxapi_port': 8443,
     'username': 'pyclass',
     'password': '88newclass',
     'device_type': 'cisco_nxos'
