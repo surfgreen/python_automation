@@ -10,7 +10,7 @@ device_dict = {
     'ssh_port': 22,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'ios_xe'
+    'device_type': 'cisco_xe'
 },
 
 'cisco': {
@@ -20,7 +20,7 @@ device_dict = {
     'ssh_port': 22,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'ios_xe'
+    'device_type': 'cisco_xe'
 },
 
 'arista1': {
@@ -30,7 +30,7 @@ device_dict = {
     'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'arista'
+    'device_type': 'arista_eos'
 },
 
 'arista2': {
@@ -40,7 +40,7 @@ device_dict = {
     'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'arista'
+    'device_type': 'arista_eos'
 },
 
 'arista3': {
@@ -50,7 +50,7 @@ device_dict = {
     'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'arista'
+    'device_type': 'arista_eos'
 },
 
 'arista4': {
@@ -60,7 +60,7 @@ device_dict = {
     'eapi_port': 443,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'arista'
+    'device_type': 'arista_eos'
 },
 
 'srx2': {
@@ -80,6 +80,7 @@ device_dict = {
     'nxapi_port': 8443,
     'username': 'pyclass',
     'password': '88newclass',
+    'device_type': 'cisco_nxos'
 },
 
 'nxos2': {
@@ -89,7 +90,7 @@ device_dict = {
     'nxapi_port': 8443,
     'username': 'pyclass',
     'password': '88newclass',
-    'device_type': 'nxos'
+    'device_type': 'cisco_nxos'
 }
 }
 
