@@ -2,7 +2,7 @@ import asyncio
 from netmiko import ConnectHandler
 import getpass
 
-"""
+
 device_dict = {
 'cisco3': {
     # 'comment': 'Cisco IOS-XE',
@@ -116,7 +116,7 @@ device_dict = {
     'device_type': 'cisco_xe'
 }
 }
-
+"""
 exec_send_args = {'command_string': "show run",
                   'expect_string': None,
                   'delay_factor': 1,
@@ -188,7 +188,7 @@ async def ssh_connect(sort_dict):
     # takes in a sorted connection dictionary used to make ssh connections
     # returns our "thread_dict" with the format {device_name: connection_object}
     device_list = list(sort_dict)
-    coroutine = [await ConnectHandler(**sort_dict[device]) for device in device_list]
+    coroutine = await [ConnectHandler(**sort_dict[device]) for device in device_list]
     print(coroutine)
     try:
         threads = await asyncio.gather(*coroutine)
