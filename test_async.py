@@ -96,25 +96,25 @@ device_dict = {
 }
 """
 device_dict = {
-    'cisco3': {
-        # 'comment': 'Cisco IOS-XE',
-        'host': 'cisco3.lasthop.io',
-        # 'snmp_port': 161,
-        # 'ssh_port': 22,
-        'username': 'pyclass',
-        'password': '88newclass',
-        'device_type': 'cisco_xe'
-    },
+'cisco3': {
+    # 'comment': 'Cisco IOS-XE',
+    'host': 'cisco3.lasthop.io',
+    # 'snmp_port': 161,
+    # 'ssh_port': 22,
+    'username': 'pyclass',
+    'password': '88newclass',
+    'device_type': 'cisco_xe'
+},
 
-    'cisco': {
-        # 'comment': 'Cisco IOS-XE',
-        'host': 'cisco4.lasthop.io',
-        # 'snmp_port': 161,
-        # 'ssh_port': 22,
-        'username': 'pyclass',
-        'password': '88newclass',
-        'device_type': 'cisco_xe'
-    }
+'cisco': {
+    # 'comment': 'Cisco IOS-XE',
+    'host': 'cisco4.lasthop.io',
+    # 'snmp_port': 161,
+    # 'ssh_port': 22,
+    'username': 'pyclass',
+    'password': '88newclass',
+    'device_type': 'cisco_xe'
+}
 }
 
 exec_send_args = {'command_string': "show run",
@@ -191,10 +191,10 @@ async def ssh_connect(sort_dict):
     coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
     print(coroutine)
     threads = await asyncio.gather(*coroutine)
-    print(threads)
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
     print(thread_dict)
     return thread_dict
+
 
 
 async def ssh_disconnect(thread_dict):
@@ -222,16 +222,14 @@ def main():
 
     # ssh setup
     # note need to run asyncio.run(function())
-    thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
-    #print(thread_dict)
-    # asyncio.run(thread_dict)
+    thread_dict = ssh_connect(sort_dict=device_dict)
+
     # send commands
     output = send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args)
     print(output)
     # close ssh connection
     ssh_disconnect(thread_dict)
     return None
-
 
 if __name__ == "__main__":
     main()
