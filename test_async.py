@@ -221,10 +221,10 @@ def main():
 
     # ssh setup
     # note need to run asyncio.run(function())
-    thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
-
+    thread_dict = asyncio.gather(ssh_connect(sort_dict=device_dict))
+    # asyncio.run(thread_dict)
     # send commands
-    output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
+    output = send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args)
     print(output)
     # close ssh connection
     ssh_disconnect(thread_dict)
