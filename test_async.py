@@ -225,7 +225,7 @@ def main():
     # asyncio.run(thread_dict)
     # send commands
     output = send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args)
-    print(output)
+    #print(output)
     # close ssh connection
     ssh_disconnect(thread_dict)
     return None
