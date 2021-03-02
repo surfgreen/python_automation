@@ -192,8 +192,9 @@ async def ssh_connect(sort_dict):
     device_list = list(sort_dict)
     print(device_list)
     coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
-    print("#" * 20 + "   coroutine   " + "#" * 20)
+    print("#" * 20 + "   coroutine   " + "#" * 20+"\n")
     print(coroutine)
+    print("\n")
     # threads = await asyncio.gather(*coroutine)
     threads = coroutine
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
@@ -220,7 +221,7 @@ async def send_exec_command(thread_dict, send_dict):
 
 
 def main():
-    print("#"*20+"    SET TRACE    "+"#"*20)
+    print("#"*20+"    SET TRACE    "+"#"*20+"\n")
     #ipdb.set_trace()
     # set up our send arguments in here:
     # ssh setup
