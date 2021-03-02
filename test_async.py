@@ -231,7 +231,7 @@ async def send_exec_command(thread_dict, send_dict):
 
 async def main():
     # set up our send arguments in here:
-
+    print("running")
     # ssh setup
     # note need to run asyncio.run(function())
     thread_dict = await asyncio.run(ssh_connect(sort_dict=device_dict))
