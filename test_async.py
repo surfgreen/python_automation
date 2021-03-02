@@ -2,8 +2,7 @@ import asyncio
 from netmiko import ConnectHandler
 import getpass
 
-
-
+"""
 device_dict = {
 'cisco3': {
     # 'comment': 'Cisco IOS-XE',
@@ -117,7 +116,7 @@ device_dict = {
     'device_type': 'cisco_xe'
 }
 }
-"""
+
 exec_send_args = {'command_string': "show run",
                   'expect_string': None,
                   'delay_factor': 1,
@@ -188,25 +187,13 @@ def prompt_credentials():
 async def ssh_connect(sort_dict):
     # takes in a sorted connection dictionary used to make ssh connections
     # returns our "thread_dict" with the format {device_name: connection_object}
+    print("starting ssh_connect")
     device_list = list(sort_dict)
     coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
     print(coroutine)
-    try:
-        threads = await asyncio.gather(*coroutine)
-        thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
-        return thread_dict
-    except Exception:  # improve error handling
-        error_code = '''
-        WARNING SOMETHING WENT WRONG
-        Common causes of this are:
-                1. Incorrect hostname or IP address
-                2. Wrong TCP port
-                3. Intermediate firewall blocking access
-                4. Incorrect Credentials
-        Check your settings
-                '''
-        print(error_code)
-        quit()
+    threads = await asyncio.gather(*coroutine)
+    thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
+    return thread_dict
 
 
 
@@ -229,20 +216,19 @@ async def send_exec_command(thread_dict, send_dict):
     return output_dict
 
 
-async def main():
+def main():
     # set up our send arguments in here:
-    print("running")
+    print("main")
     # ssh setup
     # note need to run asyncio.run(function())
-    thread_dict = await asyncio.run(ssh_connect(sort_dict=device_dict))
+    thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
 
     # send commands
-    output = await send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args)
+    output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
     print(output)
     # close ssh connection
-    await ssh_disconnect(thread_dict)
+    ssh_disconnect(thread_dict)
     return None
-
 
 if __name__ == "__main__":
     main()
