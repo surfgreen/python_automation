@@ -1,6 +1,7 @@
 import asyncio
 from netmiko import ConnectHandler
 import getpass
+import ipdb
 
 """
 device_dict = {
@@ -189,7 +190,7 @@ async def ssh_connect(sort_dict):
     # returns our "thread_dict" with the format {device_name: connection_object}
     print("#"*20+"   TESTING   "+"#"*20)
     device_list = list(sort_dict)
-    coroutine = [await asyncio.gather(ConnectHandler(**sort_dict[device])) for device in device_list]
+    coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
     print(coroutine)
     # threads = await asyncio.gather(*coroutine)
     threads = coroutine
@@ -217,8 +218,9 @@ async def send_exec_command(thread_dict, send_dict):
 
 
 def main():
+    print("#"*20+"    SET TRACE    "+"#"*20)
+    ipdb.set_trace()
     # set up our send arguments in here:
-    print("main")
     # ssh setup
     # note need to run asyncio.run(function())
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
