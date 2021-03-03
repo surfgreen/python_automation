@@ -241,20 +241,20 @@ def main():
     # note need to run asyncio.run(function())
     # x = time.clock_settime()
     # time.clock_settime()
-
+    print("\nx")
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
     # y = time.clock_settime()
-    print("x")
-    print("y")
+
+    print("\ny")
     # send commands
     # a = time.clock_settime()
     print("a")
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
     # b = time.clock_settime()
-    print("b")
-    print("\n")
+    print("\nb")
+    #print("\n")
     # pprint(output)
-    print("\n")
+    #print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
     print("disconnected")
