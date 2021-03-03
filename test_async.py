@@ -202,9 +202,7 @@ async def ssh_connect(sort_dict):
     threads = coroutine
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
     print("#" * 20 + "   coroutine   " + "#" * 20 + "\n")
-    print("\n")
     print(thread_dict)
-    print("\n")
     return thread_dict
 
 
@@ -256,13 +254,8 @@ def main():
     # pprint(output)
     #print("\n")
     # close ssh connection
-    ssh_disconnect(thread_dict)
-    print("disconnected")
-    #print("x")
-    #print("y")
-
-
-    return None
+    asyncio.run(ssh_disconnect(thread_dict))
+    return
 
 
 if __name__ == "__main__":
