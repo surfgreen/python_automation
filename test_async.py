@@ -219,8 +219,11 @@ async def send_exec_command(thread_dict, send_dict):
     # thread_dict is a dictionary containing ssh_connection object for its respective device
     device_list = list(thread_dict)
     coroutine = [thread_dict[device].send_command(**send_dict) for device in device_list]
-    output_list = await asyncio.gather(*coroutine)
-    output_dict = {device_list[i]: output_list[i] for i in range(len(device_list))}
+    # output_list = await asyncio.gather(*coroutine)
+    output_dict = {device_list[i]: coroutine[i] for i in range(len(device_list))}
+    print("\n")
+    print(output_dict)
+    print("\n")
     return output_dict
 
 
