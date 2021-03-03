@@ -206,7 +206,7 @@ async def ssh_connect(sort_dict):
     return thread_dict
 
 
-async def ssh_disconnect(thread_dict):
+def ssh_disconnect(thread_dict):
     # function that disconnects from each device
     print("\n"+"#"*20+"   DISCONNECT   "+"#"*20+"\n")
     device_list = list(thread_dict)
@@ -241,20 +241,11 @@ def main():
     # time.clock_settime()
     print("\nx")
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
-    # y = time.clock_settime()
-
-    print("\ny")
-    # send commands
-    # a = time.clock_settime()
-    print("a")
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
-    # b = time.clock_settime()
-    print("\nb")
-    #print("\n")
     # pprint(output)
-    #print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
+
     return
 
 
