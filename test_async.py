@@ -252,7 +252,7 @@ def main():
     # b = time.clock_settime()
     print("b")
     print("\n")
-    pprint(output)
+    # pprint(output)
     print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
