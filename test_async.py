@@ -3,6 +3,7 @@ from netmiko import ConnectHandler
 import getpass
 from pprint import pprint
 import ipdb
+import datetime
 
 
 device_dict = {
@@ -209,6 +210,7 @@ async def ssh_connect(sort_dict):
 
 async def ssh_disconnect(thread_dict):
     # function that disconnects from each device
+    print("\n"+"#"*20+"   DISCONNECT   "+"#"*20+"\n")
     device_list = list(thread_dict)
     print("Disconnecting from {}".format(device) for device in device_list)
     coroutine = [thread_dict[device].disconnect() for device in device_list]
@@ -231,19 +233,30 @@ async def send_exec_command(thread_dict, send_dict):
 
 
 def main():
-    print("#"*20+"    SET TRACE    "+"#"*20+"\n")
+    #print("#"*20+"    SET TRACE    "+"#"*20+"\n")
     #ipdb.set_trace()
     # set up our send arguments in here:
     # ssh setup
     # note need to run asyncio.run(function())
+    x = datetime.time()
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
+    y = datetime.time()
+    print(x)
+    print(y)
     # send commands
+    a = datetime.time()
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
+    b = datetime.time()
     print("\n")
-    pprint(output)
+    #pprint(output)
     print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
+    print("disconnected")
+    print(x)
+    print(y)
+    print(a)
+    print(b)
     return None
 
 
