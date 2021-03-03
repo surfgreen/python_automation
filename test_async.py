@@ -238,15 +238,15 @@ def main():
     # set up our send arguments in here:
     # ssh setup
     # note need to run asyncio.run(function())
-    x = datetime.time
+    x = datetime.now()
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
-    y = datetime.time
+    y = datetime.now()
     print(x)
     print(y)
     # send commands
-    a = datetime.time
+    a = datetime.now()
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
-    b = datetime.time
+    b = datetime.now()
     print("\n")
     #pprint(output)
     print("\n")
