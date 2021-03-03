@@ -199,7 +199,9 @@ async def ssh_connect(sort_dict):
     threads = coroutine
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
     print("#" * 20 + "   coroutine   " + "#" * 20 + "\n")
-    print("\n"+thread_dict+"\n")
+    print("\n")
+    print(thread_dict)
+    print("\n")
     return thread_dict
 
 
