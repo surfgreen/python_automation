@@ -3,7 +3,7 @@ from netmiko import ConnectHandler
 import getpass
 import ipdb
 
-"""
+
 device_dict = {
 'cisco3': {
     # 'comment': 'Cisco IOS-XE',
@@ -117,6 +117,7 @@ device_dict = {
     'device_type': 'cisco_xe'
 }
 }
+"""
 
 exec_send_args = {'command_string': "show run",
                   'expect_string': None,
@@ -222,7 +223,7 @@ async def send_exec_command(thread_dict, send_dict):
     # output_list = await asyncio.gather(*coroutine)
     output_dict = {device_list[i]: coroutine[i] for i in range(len(device_list))}
     print("\n")
-    print(output_dict)
+    #print(output_dict)
     print("\n")
     return output_dict
 
@@ -236,7 +237,9 @@ def main():
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
     # send commands
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
+    print("\n")
     print(output)
+    print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
     return None
