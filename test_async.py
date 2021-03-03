@@ -212,8 +212,8 @@ async def ssh_disconnect(thread_dict):
     device_list = list(thread_dict)
     print(device_list)
     print(f"Disconnecting from {device}" for device in device_list)
-    coroutine = [thread_dict[device].disconnect() for device in device_list]
-    await asyncio.gather(*coroutine)
+    [thread_dict[device].disconnect() for device in device_list]
+    # await asyncio.gather(*coroutine)
     return
 
 
