@@ -1,6 +1,7 @@
 import asyncio
 from netmiko import ConnectHandler
 import getpass
+from pprint import pprint
 import ipdb
 
 
@@ -219,6 +220,7 @@ async def send_exec_command(thread_dict, send_dict):
     # sends the command to each device
     # thread_dict is a dictionary containing ssh_connection object for its respective device
     device_list = list(thread_dict)
+    print("Still not asynco")
     coroutine = [thread_dict[device].send_command(**send_dict) for device in device_list]
     # output_list = await asyncio.gather(*coroutine)
     output_dict = {device_list[i]: coroutine[i] for i in range(len(device_list))}
@@ -238,7 +240,7 @@ def main():
     # send commands
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
     print("\n")
-    print(output)
+    pprint(output)
     print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
