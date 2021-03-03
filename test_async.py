@@ -210,6 +210,7 @@ def ssh_disconnect(thread_dict):
     # function that disconnects from each device
     print("\n"+"#"*20+"   DISCONNECT   "+"#"*20+"\n")
     device_list = list(thread_dict)
+    print(device_list)
     print("Disconnecting from {}".format(device) for device in device_list)
     coroutine = [thread_dict[device].disconnect() for device in device_list]
     #await asyncio.gather(*coroutine)
@@ -221,7 +222,7 @@ async def send_exec_command(thread_dict, send_dict):
     # sends the command to each device
     # thread_dict is a dictionary containing ssh_connection object for its respective device
     device_list = list(thread_dict)
-    print("Still not asynco")
+    # still not asynco
     coroutine = [thread_dict[device].send_command(**send_dict) for device in device_list]
     # output_list = await asyncio.gather(*coroutine)
     output_dict = {device_list[i]: coroutine[i] for i in range(len(device_list))}
