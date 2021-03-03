@@ -206,7 +206,7 @@ async def ssh_connect(sort_dict):
     return thread_dict
 
 
-def ssh_disconnect(thread_dict):
+async def ssh_disconnect(thread_dict):
     # function that disconnects from each device
     print("\n"+"#"*20+"   DISCONNECT   "+"#"*20+"\n")
     device_list = list(thread_dict)
