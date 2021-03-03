@@ -3,7 +3,7 @@ from netmiko import ConnectHandler
 import getpass
 from pprint import pprint
 import ipdb
-import datetime
+import time
 
 
 device_dict = {
@@ -238,27 +238,28 @@ def main():
     # set up our send arguments in here:
     # ssh setup
     # note need to run asyncio.run(function())
-    x = datetime.time()
+    # x = time.clock_settime()
+    # time.clock_settime()
+
     thread_dict = asyncio.run(ssh_connect(sort_dict=device_dict))
-    y = datetime.time()
-    print(x)
-    print(y)
+    # y = time.clock_settime()
+    print("x")
+    print("y")
     # send commands
-    a = datetime.time()
+    # a = time.clock_settime()
+    print("a")
     output = asyncio.run(send_exec_command(thread_dict=thread_dict, send_dict=exec_send_args))
-    b = datetime.time()
+    # b = time.clock_settime()
+    print("b")
     print("\n")
-    #pprint(output)
+    pprint(output)
     print("\n")
     # close ssh connection
     ssh_disconnect(thread_dict)
     print("disconnected")
-    print(x)
-    print(y)
-    print(a)
-    print(b)
-    print(x-y)
-    print(a-b)
+    #print("x")
+    #print("y")
+
 
     return None
 
