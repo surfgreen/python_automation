@@ -191,17 +191,17 @@ def prompt_credentials():
 async def ssh_connect(sort_dict):
     # takes in a sorted connection dictionary used to make ssh connections
     # returns our "thread_dict" with the format {device_name: connection_object}
-    print("#"*20+"   TESTING   "+"#"*20)
+    print("#"*20+"   CONNECTING   "+"#"*20)
     device_list = list(sort_dict)
     print(device_list)
     coroutine = [ConnectHandler(**sort_dict[device]) for device in device_list]
-    print("#" * 20 + "   coroutine   " + "#" * 20+"\n")
+    print("#" * 20 + "   CONNECTED   " + "#" * 20+"\n")
     print(coroutine)
     print("\n")
     # threads = await asyncio.gather(*coroutine)
     threads = coroutine
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
-    print("#" * 20 + "   coroutine   " + "#" * 20 + "\n")
+    print("#" * 20 + "   DICT   " + "#" * 20 + "\n")
     print(thread_dict)
     return thread_dict
 
