@@ -257,6 +257,9 @@ def main():
     print(y)
     print(a)
     print(b)
+    print(x-y)
+    print(a-b)
+
     return None
 
 
