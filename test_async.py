@@ -198,7 +198,7 @@ async def ssh_connect(sort_dict):
     print("#" * 20 + "   CONNECTED   " + "#" * 20+"\n")
     print(coroutine)
     print("\n")
-    #threads = await asyncio.gather(*coroutine)
+    # threads = await asyncio.gather(*coroutine)
     threads = coroutine
     thread_dict = {device_list[i]: threads[i] for i in range(len(device_list))}
     print("#" * 20 + "   DICT   " + "#" * 20)
@@ -225,9 +225,8 @@ async def send_exec_command(thread_dict, send_dict):
     device_list = list(thread_dict)
     # still not asynco
     coroutine = [thread_dict[device].send_command(**send_dict) for device in device_list]
-    output_list = asyncio.gather(*coroutine)
-    print(output_list)
-    output_dict = {device_list[i]: output_list[i] for i in range(len(device_list))}
+    # output_list = await asyncio.gather(*coroutine)
+    output_dict = {device_list[i]: coroutine[i] for i in range(len(device_list))}
     #print(output_dict)
     return output_dict
 
